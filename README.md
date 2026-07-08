@@ -47,7 +47,39 @@ pip install -r requirements.txt
 python app.py
 ```
 
-## 📡 API Endpoints
+## �️ CLI Usage
+
+```bash
+# Install the tool
+pip install -e .
+
+# List all movies
+movieforge list
+
+# Upload a movie
+movieforge upload adhiradi "movie.mp4"
+
+# Watch a movie
+movieforge watch adhiradi
+
+# Interactive mode
+movieforge interactive
+
+# Use with deployed server
+movieforge --url https://movieforge.up.railway.app list
+```
+
+## 🌐 GUI Usage
+
+```bash
+# Start the web server
+python app.py
+
+# Open in browser
+http://localhost:5000
+```
+
+## �📡 API Endpoints
 
 - `/api/movies` - List all movies
 - `/api/auth` - Get credentials
