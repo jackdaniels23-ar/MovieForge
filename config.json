@@ -1,0 +1,34 @@
+{
+  "users": {
+    "adhiradi": "basiljoseph",
+    "pushpa_2": "alluarjun",
+    "devara": "jrntr",
+    "kalki": "prabhas"
+  },
+  "movies": {
+    "adhiradi": {
+      "name": "Athiradi",
+      "hero": "Basil Joseph",
+      "uploaded": false,
+      "description": "Action thriller movie"
+    },
+    "pushpa_2": {
+      "name": "Pushpa 2",
+      "hero": "Allu Arjun",
+      "uploaded": false,
+      "description": "Action drama movie"
+    },
+    "devara": {
+      "name": "Devara",
+      "hero": "Jr NTR",
+      "uploaded": false,
+      "description": "Period action movie"
+    },
+    "kalki": {
+      "name": "Kalki 2898 AD",
+      "hero": "Prabhas",
+      "uploaded": false,
+      "description": "Sci-fi epic movie"
+    }
+  }
+}

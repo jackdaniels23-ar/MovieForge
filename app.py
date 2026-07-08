@@ -3,6 +3,7 @@
 MovieForge - Cloud movie server
 """
 
+import json
 import os
 import secrets
 from flask import Flask, request, jsonify, render_template_string, send_file, redirect
@@ -16,20 +17,40 @@ CORS(app)
 UPLOAD_FOLDER = "/tmp/movies" if os.environ.get("RAILWAY_ENV") else "movies"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-USERS = {
-    "adhiradi": "basiljoseph",
-}
 
-MOVIES = {
-    "adhiradi": {
-        "name": "Athiradi",
-        "hero": "Basil Joseph",
-        "uploaded": False,
-        "filename": None,
-        "size": None,
-        "description": "Action thriller movie",
+def load_config():
+    try:
+        with open("config.json", "r", encoding="utf-8") as handle:
+            return json.load(handle)
+    except FileNotFoundError:
+        return None
+
+
+CONFIG = load_config()
+if CONFIG:
+    USERS = CONFIG.get("users", {})
+    MOVIES = {}
+    for username, movie in CONFIG.get("movies", {}).items():
+        MOVIES[username] = {
+            "name": movie.get("name", username),
+            "hero": movie.get("hero", "Unknown"),
+            "uploaded": movie.get("uploaded", False),
+            "filename": movie.get("filename"),
+            "size": movie.get("size"),
+            "description": movie.get("description", ""),
+        }
+else:
+    USERS = {"adhiradi": "basiljoseph"}
+    MOVIES = {
+        "adhiradi": {
+            "name": "Athiradi",
+            "hero": "Basil Joseph",
+            "uploaded": False,
+            "filename": None,
+            "size": None,
+            "description": "Action thriller movie",
+        }
     }
-}
 
 
 def get_base_url():
